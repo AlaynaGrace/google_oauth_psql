@@ -9,7 +9,7 @@ var index = require('./routes/index');
 var auth = require('./routes/auth');
 var isLoggedIn = require('./utils/auth');
 var private = require('./routes/private/index');
-var database = require('./utils/database');
+// var database = require('./utils/database');
 /** ---------- EXPRESS APP CONFIG ---------- **/
 var app = express();
 app.use('/public', express.static('public'));  // serve files from public
@@ -17,7 +17,7 @@ app.use('/public', express.static('public'));  // serve files from public
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 /** ---------- DATABASE CONNECTION HANDLING ---------- **/
-database();
+// database();
 /** ---------- SESSION CREATION AND STORAGE ---------- **/
 /**
  * Creates session that will be stored in memory.
@@ -44,6 +44,6 @@ app.use('/auth', auth);
 app.use('/private', isLoggedIn, private);
 app.use('/', index);
 /** ---------- SERVER START ---------- **/
-app.listen(3000, function () {
+app.listen(3005, function () {
   console.log('Now running on port ', 3000);
 });

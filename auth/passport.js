@@ -22,6 +22,7 @@ var UserService = require('../services/user');
 
 // serialize the user onto the session
 passport.serializeUser(function (user, done) {
+  console.log("We are serializing the user", user);
   done(null, user.id);
 });
 
@@ -29,9 +30,10 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (id, done) {
   UserService.findUserById(id, function (err, user) {
     if (err) {
+      console.log('we are in deserializeUser with an error:', err);
       return done(err);
     }
-
+    console.log("There were no errors in we are in deserializeUser!",user);
     return done(null, user);
   });
 });
